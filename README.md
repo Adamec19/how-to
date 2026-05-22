@@ -19,3 +19,4 @@ Každá složka řeší jedno konkrétní téma — stačí otevřít a najdeš 
 | [curl-api](./curl-api/README.md) | Testování API z terminálu pomocí curl |
 | [ssh-keys](./ssh-keys/README.md) | Generování SSH klíčů, nastavení pro GitHub, více účtů |
 | [direct-dev](./direct-dev/README.md) | Cheat sheet specifický pro vývoj v Directu |
+| [macos-keychain](./macos-keychain/README.md) | Ukládání hesel do macOS Keychain — bezpečně bez `.zshrc` |
