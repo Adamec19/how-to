@@ -113,6 +113,31 @@ git commit --amend --no-edit
 
 ---
 
+## Kontrola před pushnutím
+
+**Kolik commitů mám od posledního pushu:**
+```bash
+git log --oneline origin/main..HEAD
+```
+
+**Vrátit poslední commit (zachovat kód):**
+```bash
+git reset --soft HEAD~1
+```
+
+**Nebo hned smazat i kód:**
+```bash
+git reset --hard HEAD~1
+```
+> ⚠️ POZOR — toto nelze vrátit
+
+**Ověřit že je to OK:**
+```bash
+git log --oneline
+```
+
+---
+
 ## Sync s remote
 
 ```bash
