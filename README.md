@@ -12,7 +12,7 @@ Každá složka řeší jedno konkrétní téma — stačí otevřít a najdeš 
 |---|---|
 | [symlink-shortcut](./symlink-shortcut/README.md) | Jak vytvořit symlink — propojit soubor z jiného místa bez kopírování |
 | [restore-db](./restore-db/README.md) | Restore PostgreSQL databáze ze zálohy do Docker kontejneru |
-| [link-local-package](./link-local-package/README.md) | Jak lokálně nainstalovat vybuilděný npm balíček bez `npm link` |
+| [cp-dist-workflow](./cp-dist-workflow/README.md) | Lokální testování npm balíčku — přímé kopírování `dist` do `node_modules` |
 | [parse-json](./parse-json/README.md) | Python script pro analýzu a počítání komponent v Strapi JSON exportu |
 | [git-flow](./git-flow/README.md) | Git cheat sheet — každodenní příkazy, vrácení změn, větve, merge |
 | [docker-basics](./docker-basics/README.md) | Docker cheat sheet — kontejnery, logy, exec, compose |
