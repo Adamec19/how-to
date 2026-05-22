@@ -12,24 +12,24 @@ Nejjednodušší přístup — žádný `npm link`, žádný `npm pack`. Stačí
 
 **1. Udělej změny v balíčku a vybuildi ho:**
 ```bash
-cd ~/Desktop/direct-react-components
+cd ~/work/direct/projects/direct-react-components
 # ... udělej změny ...
 yarn build
 ```
 
 **2. Smaž starou `dist` v cílovém projektu:**
 ```bash
-rm -rf ~/Desktop/direct-insurance-forms/node_modules/@direct/react-components/dist
+rm -rf ~/work/direct/projects/direct-insurance-forms/node_modules/@direct/react-components/dist
 ```
 
 **3. Zkopíruj novou `dist` do cílového projektu:**
 ```bash
-cp -R ~/Desktop/direct-react-components/dist ~/Desktop/direct-insurance-forms/node_modules/@direct/react-components/
+cp -R ~/work/direct/projects/direct-react-components/dist ~/work/direct/projects/direct-insurance-forms/node_modules/@direct/react-components/
 ```
 
 **4. Přepni do cílového projektu a restartuj dev server:**
 ```bash
-cd ~/Desktop/direct-insurance-forms
+cd ~/work/direct/projects/direct-insurance-forms
 rm -rf .next
 yarn dev
 ```
