@@ -35,7 +35,7 @@ Otevři `restore_strapi.py` a zkontroluj tyto proměnné na začátku:
 
 **Příklad:**
 ```python
-HOST_SQL_PATH = "/Users/martin.adamec/work/direct/projects/script/db_strapi_backup_22.12_2026.sql"
+HOST_SQL_PATH = "/Users/martin.adamec/work/how-to/restore-db/db_strapi_backup_22.12_2026.sql"
 ```
 
 ---
