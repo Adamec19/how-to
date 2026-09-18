@@ -22,3 +22,5 @@ Každá složka řeší jedno konkrétní téma — stačí otevřít a najdeš 
 | [direct-dev](./direct-dev/README.md) | Cheat sheet specifický pro vývoj v Directu |
 | [macos-keychain](./macos-keychain/README.md) | Ukládání hesel do macOS Keychain — bezpečně bez `.zshrc` |
 | [algorithms](./algorithms/README.md) | Přehled základních algoritmů — sorting, searching, grafy, dynamic programming |
+| [react-cheat-sheet](./react-cheat-sheet/README.md) | Praktický React guide — architektura, komponenty, stav, formuláře, dialogy, API, snippets a testování |
+| [typescript-cheat-sheet](./typescript-cheat-sheet/README.md) | TypeScript guide — typový systém, generics, narrowing, utility types, API kontrakty a praktické snippets |
