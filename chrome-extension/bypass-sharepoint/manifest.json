@@ -1,0 +1,18 @@
+{
+	"manifest_version": 3,
+	"name": "Bypass SharePoint",
+	"version": "1.0",
+	"permissions": [
+		"declarativeNetRequestWithHostAccess"
+	],
+	"host_permissions": ["https://directpojistovnaas.sharepoint.com/*"],
+	"declarative_net_request": {
+		"rule_resources": [
+			{
+				"id": "ruleset_1",
+				"enabled": true,
+				"path": "rules.json"
+			}
+		]
+	}
+}

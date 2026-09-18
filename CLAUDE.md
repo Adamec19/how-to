@@ -50,7 +50,7 @@ After adding or renaming a folder, always update the table in `/how-to/README.md
 | Folder | Description |
 |--------|-------------|
 | `symlink-shortcut` | Vytvoření symlinkového propojení souborů |
-| `restore-db` | Restore PostgreSQL ze zálohy přes Docker |
+| `restore-db` | Restore PostgreSQL ze zálohy přes Docker + seed Strapi v5 dev dat (`seedDevData.js`) |
 | `cp-dist-workflow` | Lokální testování npm balíčku kopírováním `dist` do `node_modules` |
 | `parse-json` | Python script pro počítání Strapi komponent v JSON exportu |
 | `git-flow` | Git cheat sheet — každodenní příkazy, větve, reset, stash |

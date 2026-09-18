@@ -1,5 +1,14 @@
 # Restore Databáze — postgres_strapi
 
+Dva scripty pro práci s lokální Strapi databází:
+
+| Script | K čemu |
+|---|---|
+| `restore_strapi.py` | Restore celé DB ze záložního `.sql` souboru |
+| `seedDevData.js` | Naplnění čisté DB ukázkovými dev daty (Strapi v5) |
+
+---
+
 ## K čemu script slouží?
 
 Script `restore_strapi.py` obnoví celou PostgreSQL databázi ze záložního `.sql` souboru do Docker kontejneru.
@@ -60,3 +69,70 @@ python3 /Users/martin.adamec/work/how-to/restore-db/restore_strapi.py
 - Kontejner `postgres_strapi` musí být spuštěný
 - Python 3 nainstalovaný (`python3 --version`)
 - `.sql` záložní soubor musí existovat na cestě v `HOST_SQL_PATH`
+
+---
+
+# Seed dev dat — seedDevData.js
+
+## K čemu script slouží?
+
+Naplní **čistou** lokální Strapi (v5) databázi ukázkovými daty. Hodí se, když starý `.sql` dump obsahuje nevalidní data a v5 Strapi s ním nenastartuje — místo restore ze zálohy vytvoříš čerstvá validní data.
+
+Co vytvoří:
+- 3 blog post categories, 2 page categories, 4 tags, 2 release-notes categories
+- 1 placeholder obrázek (600×400 PNG, upload do `public/uploads`)
+- 5 blog posts + 4 pages — jako draft, poté publikováno (v5 draft & publish dvojčata)
+
+Data se vytvářejí přes **Strapi Documents API** (ne raw SQL), takže projdou všechny validace i lifecycles — `generatedUrl` se generuje správně, duplicate checky fungují.
+
+## ⚠️ Pozor — co script NEdělá
+
+- **Nic nemaže** — je nedestruktivní
+- Je **idempotentní** — při opakovaném spuštění existující záznamy přeskočí (match podle slug/title)
+- Nenahrává nic do cloudu — v development módu jde upload lokálně
+
+## Konfigurace
+
+| Proměnná | Popis | Default |
+|---|---|---|
+| `STRAPI_APP_DIR` | cesta ke Strapi projektu | `~/work/direct/projects/direct.cz-cms/strapi` |
+
+Připojení k DB si bere z `.env` Strapi projektu (`DATABASE_URL`). Závislosti (`@strapi/strapi`, `dotenv`) načítá z `node_modules` Strapi projektu — v projektu musí být nainstalované (`yarn install`).
+
+## Jak spustit?
+
+1. Postgres kontejner musí běžet:
+```bash
+docker ps   # postgres_strapi
+```
+
+2. Spusť script (odkudkoliv):
+```bash
+node /Users/martin.adamec/work/how-to/restore-db/seedDevData.js
+```
+
+Jiná cesta ke Strapi projektu:
+```bash
+STRAPI_APP_DIR=/jina/cesta/strapi node seedDevData.js
+```
+
+## Typický workflow — čistý start s v5
+
+```bash
+# 1. vyčistit DB
+docker exec postgres_strapi psql -U postgres -c "DROP DATABASE postgres_strapi WITH (FORCE);"
+docker exec postgres_strapi psql -U postgres -c "CREATE DATABASE postgres_strapi;"
+
+# 2. nastartovat Strapi — vytvoří schéma + pustí migrace
+cd ~/work/direct/projects/direct.cz-cms/strapi && yarn develop
+
+# 3. naplnit daty
+node /Users/martin.adamec/work/how-to/restore-db/seedDevData.js
+```
+
+## Požadavky
+
+- Docker + běžící kontejner `postgres_strapi`
+- Strapi projekt s nainstalovanými závislostmi (`yarn install`)
+- DB se schématem (alespoň jednou proběhlý `yarn develop`)
+- Node.js
